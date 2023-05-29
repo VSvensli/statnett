@@ -2,7 +2,7 @@
 
 Setup:
 ```shell
-pip: -r requirements.txt
+pip -r requirements.txt
 ```
 
 Start collecting from API:
