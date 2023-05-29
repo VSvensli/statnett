@@ -140,6 +140,7 @@ def run_handle_missing(config:APIConfig, lock:threading.Lock) -> None:
             break
 
         if not os.path.isfile(config.missing_data_queue_save_path):
+            logging.info(f'No missing entries file. Sleeping for {config.check_missing_delay} seconds...')
             time.sleep(config.check_missing_delay)
             continue
 
