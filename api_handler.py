@@ -75,7 +75,7 @@ def get_last_data_entry(config:APIConfig, lock:threading.Lock) -> pd.DataFrame:
         return None
     
     datetime_str = sorted(datetime_str)
-    last_data_entry_filename = f'aggregatedData/{datetime_str[-1]}'
+    last_data_entry_filename = os.path.join(config.save_path, datetime_str[-1])
     with lock:
         with open(last_data_entry_filename,'r') as f:
             last_data_entry = f.read()
