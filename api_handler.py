@@ -185,10 +185,6 @@ if __name__ == '__main__':
         retry_delay=1,
         check_missing_delay=10)
 
-    if not os.path.exists(config.save_path):
-        logging.info(f'Making dir {config.save_path}')
-        os.makedirs(config.save_path)
-
     logging.basicConfig(filename='logs.log',
                         filemode='a',
                         format="%(asctime)s | %(levelname)s |  %(message)s",
@@ -199,6 +195,10 @@ if __name__ == '__main__':
     formatter = logging.Formatter('%(asctime)s | %(levelname)s |  %(message)s |  thread= %(threadName)s', datefmt='%Y-%m-%dT%H:%M:%SZ"')
     handler.setFormatter(formatter)
     logging.getLogger().addHandler(handler)
+
+    if not os.path.exists(config.save_path):
+        logging.info(f'Making dir {config.save_path}')
+        os.makedirs(config.save_path)
 
     lock = threading.Lock()
     event = threading.Event()
